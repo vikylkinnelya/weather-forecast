@@ -1,0 +1,42 @@
+[
+    {
+        "id": 3067695,
+        "name": "Hlavní město Praha",
+        "state": "",
+        "country": "CZ",
+        "coord": {
+            "lon": 14.46667,
+            "lat": 50.083328
+        }
+    },
+    {
+        "id": 3078610,
+        "name": "Brno",
+        "state": "",
+        "country": "CZ",
+        "coord": {
+            "lon": 16.60796,
+            "lat": 49.195221
+        }
+    },
+    {
+        "id": 3069011,
+        "name": "Olomouc",
+        "state": "",
+        "country": "CZ",
+        "coord": {
+            "lon": 17.251751,
+            "lat": 49.59552
+        }
+    },
+    {
+        "id": 3067542,
+        "name": "Příbram",
+        "state": "",
+        "country": "CZ",
+        "coord": {
+            "lon": 14.01043,
+            "lat": 49.68988
+        }
+    }
+]
