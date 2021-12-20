@@ -64,33 +64,35 @@ const removeList = () => {
     list != null && list.parentNode.removeChild(list)
 }
 
-const setMinMaxTemp = (el, dayNum) => {
+const createMinMax = (type, dayNum) => {
+
+    const el = document.createElement('div')
+    const c = document.createElement('span')
+    el.classList.add(`${type}-temp-${dayNum}`)
+
+    const minMaxWrapper = document.querySelector(`.min-max-wrapper-${dayNum}`)
+    c.innerText = '°C'
+    const space = document.createElement('span')
+    space.innerText = ('...')
+    minMaxWrapper.appendChild(el)
+    minMaxWrapper.appendChild(c)
+    type === 'min' && minMaxWrapper.appendChild(space)
+
+    return document.querySelector(`.${type}-temp-${dayNum}`)
+}
+
+const setMinMaxTemp = (temp, dayNum) => {
+
     const forecastDay = document.querySelector(`.forecast-${dayNum}`)
-
-    const minEx = document.querySelector(`.min-temp-${dayNum}`) || false
-    const maxEx = document.querySelector(`.max-temp-${dayNum}`) || false
-
     const minMaxWrapper = document.createElement('div')
-    const minCr = document.createElement('div')
-    const maxCr = document.createElement('div')
-
-    minMaxWrapper.classList.add('min-max-wrapper')
-    minCr.classList.add(`min-temp-${dayNum}`)
-    maxCr.classList.add(`max-temp-${dayNum}`)
-
+    minMaxWrapper.classList.add(`min-max-wrapper-${dayNum}`, 'min-max-wrapper')
     forecastDay.appendChild(minMaxWrapper)
-    !minEx ? minMaxWrapper.appendChild(minCr) : null
-    !maxEx ? minMaxWrapper.appendChild(maxCr) : null
 
-    const elMin = Math.floor(el.main['temp_min'] - 273, 15) + "°C"
-    const elMax = Math.floor(el.main['temp_max'] - 273, 15) + "°C"
+    const min = document.querySelector(`.min-temp-${dayNum}`) || createMinMax('min', dayNum)
+    const max = document.querySelector(`.max-temp-${dayNum}`) || createMinMax('max', dayNum)
 
-    const minExTemp = elMin || minEx.innerText != null
-    const maxExTemp = elMax || maxEx.innerText != null
-
-    elMin <= minExTemp ? minCr.innerText = elMin + ' ... ' : null
-    elMax <= maxExTemp ? maxCr.innerText = elMax : null
-
+    min.innerText = Math.min(min.innerText, temp)
+    max.innerText = Math.max(max.innerText, temp)
 }
 
 const setTempByHours = (el, idx) => {
@@ -105,7 +107,8 @@ const setTempByHours = (el, idx) => {
     const dayTime = document.createElement('div')
     const timeTemp = document.createElement('div')
 
-    setMinMaxTemp(el, dayNum)
+    const temp = Math.floor(main['temp'] - 273, 15)
+    setMinMaxTemp(temp, dayNum)
 
     const forecastDay = document.querySelector(`.forecast-${dayNum}`)
     hoursTempInfo.classList.add('hours-temp-info', `hti-d${dayNum}-h${h}`)
@@ -116,7 +119,7 @@ const setTempByHours = (el, idx) => {
     hoursTempInfo.appendChild(dayTime)
 
     timeTemp.classList.add('time-temp')
-    timeTemp.innerText = Math.floor(main['temp'] - 273, 15) + "°C"
+    timeTemp.innerText = temp + "°C"
     hoursTempInfo.appendChild(timeTemp)
 
 
