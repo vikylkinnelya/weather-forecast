@@ -86,7 +86,7 @@ const setMinMaxTemp = (temp, dayNum) => {
     const forecastDay = document.querySelector(`.forecast-${dayNum}`)
     const minMaxWrapper = document.createElement('div')
     minMaxWrapper.classList.add(`min-max-wrapper-${dayNum}`, 'min-max-wrapper')
-    forecastDay.appendChild(minMaxWrapper)
+    document.querySelector(`.min-max-wrapper-${dayNum}`) || forecastDay.appendChild(minMaxWrapper)
 
     const min = document.querySelector(`.min-temp-${dayNum}`) || createMinMax('min', dayNum)
     const max = document.querySelector(`.max-temp-${dayNum}`) || createMinMax('max', dayNum)
@@ -98,6 +98,7 @@ const setMinMaxTemp = (temp, dayNum) => {
 const setTempByHours = (el, idx) => {
 
     const { dt_txt, dt, weather, main } = el
+
     let dayNum = setForecastDay(dt)
 
     let h = new Date(dt * 1000).getHours()
@@ -108,6 +109,8 @@ const setTempByHours = (el, idx) => {
     const timeTemp = document.createElement('div')
 
     const temp = Math.floor(main['temp'] - 273, 15)
+
+    setForecastDayDate(dt, dayNum)
     setMinMaxTemp(temp, dayNum)
 
     const forecastDay = document.querySelector(`.forecast-${dayNum}`)
@@ -123,6 +126,22 @@ const setTempByHours = (el, idx) => {
     hoursTempInfo.appendChild(timeTemp)
 
 
+}
+
+const setForecastDayDate = (dt, dayNum) => {
+    const forecastDay = document.querySelector(`.forecast-${dayNum}`)
+
+    const date = new Date(dt * 1000)
+    const dY = date.getFullYear()
+    const dM = date.getMonth() + 1
+    const dD = date.getDate()
+    const fullDate = [dD, dM, dY].join('.')
+
+    const forecasDayDate = document.createElement('div')
+    forecasDayDate.classList.add(`forecast-day-date-${dayNum}`, 'forecast-day-date')
+    forecasDayDate.innerHTML = `<h3>${fullDate}</h3>`
+
+    document.querySelector(`.forecast-day-date-${dayNum}`) || forecastDay.appendChild(forecasDayDate)
 }
 
 window.addEventListener('DOMContentLoaded', () => {
