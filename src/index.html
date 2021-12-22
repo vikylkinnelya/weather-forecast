@@ -20,12 +20,8 @@
     <main class="main">
         <p>Please, choose or enter the city name</p>
         <form id="form">
-            <input id='city-input' list='cities' placeholder="city">
-            <datalist id='cities'>
-                <option value='Praha' id='3067695'>
-                <option value='Brno' id='3078610'>
-                <option value='Příbram' id='3067542'>
-                <option value='Olomouc' id='3069011'>
+            <input id='city-input' list='data-list-cities' placeholder="city">
+            <datalist id='data-list-cities'>
             </datalist>
             <input type="submit">
         </form>
@@ -49,6 +45,7 @@
         </p>
     </footer>
 
+    <script type="text/javascript" src="../cities.json"></script>
     <script src='js/script.js'> </script>
 
 </body>

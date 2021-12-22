@@ -4,6 +4,19 @@ const API_key = '03d6788b090850555c7924df3b5462b4'
 
 const list = []
 
+const getCities = () => {
+    fetch('../../cities.json')
+        .then(response => response.json())
+        .then(jsonResponse => {
+            const datalist = document.querySelector('#data-list-cities')
+            jsonResponse.forEach(el => {
+                const option = document.createElement('option')
+                option.value = el.name
+                datalist.appendChild(option)
+            })
+        })
+}
+
 const getForecast = async (city_name) => {
     const API_base = `https://api.openweathermap.org/data/2.5/forecast?q=${city_name}&appid=${API_key}`
     const res = await fetch(`${API_base}`) //передаем адрес ресурса, кот хотим получить 
@@ -172,3 +185,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 })
+
+window.onload = getCities()
