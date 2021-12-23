@@ -1,5 +1,5 @@
 const getCities = () => {
-    fetch('src/cities.json')
+    fetch('cities.json')
         .then(response => response.json())
         .then(jsonResponse => {
             const datalist = document.querySelector('#data-list-cities')
