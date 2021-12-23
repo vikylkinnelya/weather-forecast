@@ -6,8 +6,8 @@
 }
 
 .forecast-day {
+    width: 5%;
     padding: 15px;
-    padding-top: 0;
     border: rgb(110, 110, 110) 0.5px dotted;
 }
 

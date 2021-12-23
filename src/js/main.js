@@ -11,6 +11,21 @@ window.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form')
     const input = document.getElementById('city-input')
 
+    form.addEventListener('change', e => {
+        e.preventDefault();
+        removeList()
+        createList()
+
+        const inputCity = input.value;
+
+        getForecast(inputCity)
+            .then(res => res.list.forEach((el, idx) =>
+                setTempByHours(el, idx)
+            )
+            )
+            .catch(err => console.log(err))
+    })
+
     form.addEventListener("submit", e => {
         e.preventDefault();
         removeList()
