@@ -6,8 +6,9 @@
 }
 
 .forecast-day {
-    padding: 15px;
+    padding: 5px;
     border: rgb(110, 110, 110) 0.5px dotted;
+    margin: 10px;
 }
 
 .forecast-6 {
@@ -25,7 +26,6 @@
 }
 
 .forecast-title {
-    display: flex;
     justify-content: center;
 }
 
