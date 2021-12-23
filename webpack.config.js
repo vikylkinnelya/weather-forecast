@@ -1,12 +1,12 @@
 'use strict';
 const path = require('path');
 
-module.exports = (env, options) => {
+module.exports = () => {
   return {
     entry: './src/js/main.js',
 
     output: {
-      path: __dirname + '/js',
+      path: __dirname + '/src/js',
       filename: 'bundle.js',
     },
 

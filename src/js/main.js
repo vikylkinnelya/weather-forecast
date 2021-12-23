@@ -2,7 +2,8 @@
 import getCities from './services/getCities'
 import getForecast from './services/getForecast';
 import createList from './modules/createList';
-import removeList from './modules/removeList'
+import removeList from './modules/removeList';
+import setTempByHours from './modules/setTempByHours';
 
 
 window.addEventListener('DOMContentLoaded', () => {
