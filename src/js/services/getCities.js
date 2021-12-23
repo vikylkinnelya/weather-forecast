@@ -1,5 +1,10 @@
 const getCities = () => {
-    fetch('cities.json')
+    fetch('cities.json'), {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    }
         .then(response => response.json())
         .then(jsonResponse => {
             const datalist = document.querySelector('#data-list-cities')
