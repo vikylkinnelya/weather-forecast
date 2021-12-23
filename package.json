@@ -1,0 +1,29 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "charts.css": "^0.9.0",
+    "chart.js": "^3.6.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikylkinnelya/weather-forecast.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vikylkinnelya/weather-forecast/issues"
+  },
+  "homepage": "https://github.com/vikylkinnelya/weather-forecast#readme"
+}
